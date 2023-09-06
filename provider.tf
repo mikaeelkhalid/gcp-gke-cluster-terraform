@@ -1,5 +1,5 @@
 provider "google" {
-  project = "test-project"
+  project = "troverr-poc"
   region = "us-central1"
 }
 

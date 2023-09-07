@@ -1,11 +1,11 @@
 provider "google" {
-  project = "troverr-poc"
-  region  = "us-central1"
+  project = var.gcp_project
+  region  = var.gcp_region
 }
 
 terraform {
   backend "gcs" {
-    bucket = "bucket-name"
+    bucket = var.backend_gcp_bucket
     prefix = "terraform/statefile"
   }
 

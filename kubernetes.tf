@@ -1,8 +1,8 @@
 resource "google_container_cluster" "primary" {
-  name                     = "primary"
-  location                 = "us-central1-a"
+  name                     = var.cluster_name
+  location                 = "${var.gcp_region}-a"
   remove_default_node_pool = true
-  initial_node_count       = 1
+  initial_node_count       = var.node_count
   network                  = google_compute_network.main.self_link
   subnetwork               = google_compute_subnetwork.private.self_link
   logging_service          = "logging.googleapis.com/kubernetes"
@@ -11,7 +11,7 @@ resource "google_container_cluster" "primary" {
 
   # can be optional, if you want to multi-zonal cluster
   node_locations = [
-    "us-central1-b"
+    "${var.gcp_region}-b"
   ]
 
   addons_config {
@@ -29,7 +29,7 @@ resource "google_container_cluster" "primary" {
   }
 
   workload_identity_config {
-    workload_pool = "gcp-project-name.svc.id.goog"
+    workload_pool = "${var.gcp_project}.svc.id.goog"
   }
 
   ip_allocation_policy {

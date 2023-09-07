@@ -16,6 +16,7 @@ The repository is organized into multiple Terraform configuration files, each re
 ├── provider.tf           # Terraform provider and backend configuration
 ├── router.tf             # GCP router configuration for the VPC
 ├── subnets.tf            # Subnetworks configuration
+├── variables.tf          # Variables
 └── vpc.tf                # Virtual Private Cloud (VPC) configuration
 ```
 

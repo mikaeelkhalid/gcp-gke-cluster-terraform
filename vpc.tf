@@ -7,7 +7,7 @@ resource "google_project_service" "container" {
 }
 
 resource "google_compute_network" "main" {
-  name                            = "main"
+  name                            = var.vpc_name
   routing_mode                    = "REGIONAL" # or GLOBAL
   auto_create_subnetworks         = false
   mtu                             = 1460
